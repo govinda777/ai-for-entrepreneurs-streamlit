@@ -1,6 +1,9 @@
 - First client: 0xb0ff31b14e6a8f9b01bf73cd26fe1927fa4b7e37
 
-Run: streamlit run main.py
+Run: 
+```python
+streamlit run main.py
+```
 
 # Documentação: IA do Empreendedor
 
