@@ -9,10 +9,22 @@ hidden = [".pythonlibs", ".streamlit"]
 channel = "stable-24_05"
 
 [deployment]
-run = ["streamlit", "run", "--server.enableCORS=false", "--server.enableWebsocketCompression=false", "--server.runOnSave=false", "main.py"]
+run = ["sh", "-c", "streamlit run --server.enableCORS=false --server.enableXsrfProtection=false --server.enableWebsocketCompression=false --server.runOnSave=false --server.address=0.0.0.0 main.py"]
 ignorePorts = false
 deploymentTarget = "gce"
 
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 23188614
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "streamlit run --server.enableCORS=false --server.enableXsrfProtection=false --server.address=0.0.0.0 main.py"
